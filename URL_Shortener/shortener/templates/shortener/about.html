@@ -1,0 +1,33 @@
+{% load static %}
+{% include 'main.html' %}
+
+{% block content %}
+
+<div class="container">
+            <h1 class="header">
+                О нас
+            </h1>
+            <div>
+                <p class="about">Сокращаем ссылки для вас и ради вас с 2024 года</p>
+            </div>
+</div>
+
+{% endblock %}
+
+<style>
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family: "Comfortaa", sans-serif;
+  text-align: center;
+}
+
+.header {
+    font-size: 48px;
+}
+
+.about {
+    font-size: 18px;
+}
+</style>

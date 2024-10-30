@@ -1,0 +1,153 @@
+{% include 'main.html' %}
+
+{% block content %}
+<div class="dashboard-edit">
+    <h1 class="title">Редактирование профиля</h1>
+    <div class="user-data-edit">
+        <form class="edit-form" method="POST" action="">
+            {% csrf_token %}
+            <div class="username">
+                <span id="username">Имя</span>
+                {{ form.name }}
+            </div>
+            <div class="user-image">
+              <span id="user-image">Фото профиля</span>
+              <div class="button-section">
+              <label for="profile-pic" class="upload-button">Выбрать</label>
+              </div>
+              <input type="file" id="profile-pic" name="profile_pic" style="display: none;">
+            </div>
+          
+          
+          <div class="user-email">
+                <span id="user-email">Электронная почта</span>
+                {{ form.email }}
+            </div>
+            <div class="button-section">
+                <input class="save-button" type="submit" value="Сохранить">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+<style>
+.dashboard-edit {
+  width: 90%;
+  font-family: "Comfortaa", sans-serif;
+  display: flex;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  margin-top: 0;
+}
+    
+.button-section {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+}
+.edit-form {
+  flex: 1;
+  padding: 10px;
+}
+    
+.title {
+  text-align: center;
+}
+
+.user-data-edit {
+  width: 300px;
+}
+
+.username,
+.user-image,
+.user-email {
+  margin-bottom: 20px;
+}
+
+
+.user-image {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.user-image label {
+  margin-right: 10px;
+}
+
+.user-image input[type="file"] {
+  display: none;
+}
+
+.user-image .upload-button {
+  margin-left: 25px;
+  background-color: #5da2d5;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 500ms ease;
+  font-family: "Comfortaa", sans-serif;
+}
+
+.user-image .upload-button:hover {
+  transform: scale(1.1);
+}
+
+.user-email input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+    
+.edit-form form {
+  text-align: center;
+}
+    
+.edit-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+    
+.edit-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+    
+.save-button {
+  background-color: #5da2d5 !important;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 50px;
+  width: 100%;
+  transition: transform 500ms ease;
+  font-family: "Comfortaa", sans-serif;
+}
+
+.save-button a {
+  
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  
+}
+    
+.save-button:hover {
+  transform: scale(1.2);
+}
+</style>

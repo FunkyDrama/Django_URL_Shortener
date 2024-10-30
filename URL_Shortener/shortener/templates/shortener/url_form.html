@@ -1,0 +1,113 @@
+{% include 'main.html' %}
+
+{% block content %}
+
+<div class="main-section">
+        <h1>Сокращай ссылку</h1>
+
+        <form action="{% url 'generate' %}" method="POST">
+            {% csrf_token %}
+            <div>
+                <input type="url" name="original" placeholder="Оригинальный URL">
+            </div>
+            <div>
+                <div>
+                    <input type="text" name="short" placeholder="Короткий URL" id="short">
+                </div>
+            <div class="form-info">
+                <p class="info">Оставь пустым, чтобы сгенерировать автоматически или введи свой короткий адрес</p>
+                <p class="info">(Все твои ссылки сохранятся и будут отображаться в личном кабинете)</p>
+            </div>
+            </div>
+            <div class="button-section">
+                <input class="main-button" type="submit" value="Сгенерировать">
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}
+
+<style>
+.main-section {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-family: "Comfortaa", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+input::placeholder {
+    font-family: "Comfortaa", sans-serif;
+}
+
+.main-section h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="url"],
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.form-info {
+  text-align: center;
+}
+
+.info {
+  color: #666 !important;
+  margin-bottom: 5px;
+}
+
+.button-section {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.main-button {
+  background-color: #5da2d5 !important;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 50px;
+  width: 250px;
+  transition: transform 500ms ease;
+  font-family: "Comfortaa", sans-serif;
+  font-size: 20px;
+}
+
+
+.main-button:hover {
+    transform: scale(1.2);
+}
+</style>

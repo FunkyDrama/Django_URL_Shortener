@@ -1,0 +1,104 @@
+{% include 'main.html' %}
+
+{% block content %}
+
+<div class="dashboard">
+  <div class="user-data">
+    <h1 class="title">Личный кабинет</h1>
+
+    <h4> Логин: {{ Person.user }} </h4><br>
+    <h4> Электронная почта: {{ Person.email }} </h4><br>
+    <h4> Зарегистрирован: {{ Person.date }} </h4><br>
+    <img src="{{ Person.profile_pic.url }}" alt="Иконка профиля {{Person.name}}" height="150px" width="150px">
+    <div class="button-section">
+      <button class="edit-button"><a href="{% url 'edit' request.user.id %}">
+        Изменить профиль
+      </a></button>
+    </div>
+  </div>
+  <div class="table-links">
+    <h1>Твои ссылки</h1>  <br>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col" style="color: black">Оригинальный адрес</th>
+          <th scope="col" style="color: black">Новый адрес</th>
+          <th scope="col" style="color: black">Дата генерации</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for element in myurls %}
+        <tr>
+          <td style="text-decoration: none">{{ element.long_url }}</td>
+          <td><a target="_blank" href="/{{ Person.id }}/{{ element.short_url }}" style="text-decoration: none">{{ element.short_url }}</a></td>
+          <td>{{ element.date }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+{% endblock %}
+
+<style>
+.dashboard {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family: "Comfortaa", sans-serif;
+  display: flex;
+}
+
+.button-section {
+  text-align: center;
+  margin-top: 60px;
+  display: flex;
+}
+
+.edit-button {
+  background-color: #5da2d5;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 50px;
+  width: 250px;
+  transition: transform 500ms ease;
+  font-family: "Comfortaa", sans-serif;
+}
+
+.edit-button a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.edit-button:hover {
+  transform: scale(1.2);
+}
+
+.user-data,
+.table-links {
+  flex: 1;
+  padding: 15px;
+}
+.title,
+.table-links h1 {
+  text-align: center;
+}
+
+
+td {
+  padding-top: 20px;
+  padding-left: 70px; 
+  padding-right: 70px;
+}
+
+tr {
+  margin-bottom: 50px;
+}
+
+</style>

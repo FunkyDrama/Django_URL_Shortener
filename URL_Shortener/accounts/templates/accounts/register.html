@@ -1,0 +1,80 @@
+{% include 'base.html' %}
+
+{% block content %}
+<div class="form_container">
+<h1 id="form-title">Регистрация аккаунта</h1>         
+    <div>
+    <form method="POST" action="">
+    {% csrf_token %}
+    <h3>Ваш логин:   {{ form.username }}</h3>
+    <h3>Электронная почта:   {{ form.email }}</h3>
+    <h3>Пароль:   {{ form.password1 }}</h3>
+    </div>
+    <div class="button-section">
+    <input class="login-button" type="submit" value="Зарегистрировать аккаунт">
+    </div>
+    </form>
+    {% for message in messages %}
+    <p id="messages">{{ message }}</p>
+    {% endfor %}
+    <div class="links">
+    Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+</div>
+</div>
+
+
+{% endblock %}
+
+<style>
+.form_container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-family: "Comfortaa", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-section {
+    text-align: center;
+    margin-top: 60px;
+    display: flex;
+}
+
+.login-button {
+    background-color: #5da2d5;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px;
+    width: 250px;
+    transition: transform 500ms ease;
+    font-family: "Comfortaa", sans-serif;
+}
+
+.login-button a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+.login-button:hover {
+    transform: scale(1.2);
+}
+
+.links {
+    margin-top: 40px;
+}
+    
+.links a {
+    color: #007bff;
+    text-decoration: none;
+}
+    
+.links a:hover {
+    text-decoration: underline;
+}
+</style>
